@@ -1,0 +1,46 @@
+.previousjobs {
+    background-color: rgb(233, 233, 233);
+  }
+
+.previousjobs h2 {
+    Font-Family: 'Catamaran', Sans-Serif;
+Font-Size: 30px; 
+margin: 0; 
+padding-top: 20px; 
+}
+
+.previousjobs p {
+    Font-Family: 'Merriweather Sans', Sans-Serif;
+Font-Size: 15px;
+}
+
+.previousjobs label {
+    margin-right: 10px; 
+    Font-Family: 'Merriweather Sans', Sans-Serif;
+}
+
+.previousjobs button {
+    margin-top: 20px; 
+    Font-Family: 'Merriweather Sans', Sans-Serif;
+    margin-bottom: 20px; 
+}
+
+@media only screen and (min-width: 810px) {
+.previousjobs h2 {
+    font-size: 35px; 
+}
+.previousjobs p {
+Font-Size: 18px;
+}
+.previousjobs optgroup {
+font-size: 15px; 
+}
+.previousjobs option {
+font-size: 14px; 
+}
+.previousjobs button{
+font-size: 18px; 
+}
+  
+  }
+

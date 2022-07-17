@@ -1,0 +1,78 @@
+.reviews {
+    background-color: rgb(253, 242, 218);
+    padding-bottom: 2%; 
+
+}
+
+.review {
+    background-color: rgb(233, 233, 233); 
+    width: 80%; 
+    margin-left: auto; 
+    margin-right: auto;
+    padding: 5%; 
+    margin-bottom: 5%;  
+}
+
+.reviews-header {
+    Font-Family: 'Catamaran', Sans-Serif;
+    font-size: 30px;
+    margin: 0;
+    padding-top: 25px;  
+    padding-bottom: 10px; 
+    background-color: rgb(253, 242, 218);;
+}
+
+.review h3 {
+    Font-Family: 'Catamaran', Sans-Serif;
+    font-size: 22px; 
+    margin: 0;  
+   
+}
+
+.review h4 {
+    Font-Family: 'Catamaran', Sans-Serif;
+    font-size: 18px; 
+    margin: 0;
+    color: blue    
+}
+
+.review p {
+    Font-Family: 'Merriweather Sans', Sans-Serif;
+    font-size: 13px;
+}
+
+.review span {
+    color: red; 
+}
+
+@media only screen and (min-width: 480px) {
+    .review {
+        width: 60%; 
+    }
+    .review p {
+        font-size: 15px; 
+    }
+      
+      }
+
+@media only screen and (min-width: 810px) {
+    .reviews-header {
+        font-size: 35px; 
+    }
+      
+      }
+
+@media only screen and (min-width: 900px) {
+        .reviews {
+        display: flex; 
+        padding-bottom: 0;  
+        }
+
+        .review {
+            width: 28%;
+            padding: 2%; 
+        }
+
+          
+          }
+

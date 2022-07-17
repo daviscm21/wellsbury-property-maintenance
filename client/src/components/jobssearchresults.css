@@ -1,0 +1,43 @@
+.jobssearchresults {
+    padding-bottom: 3%; 
+    background-color: rgb(233, 233, 233);
+}
+
+.jobssearchresult { 
+    width: 80%; 
+    margin-left: auto; 
+    margin-right: auto; 
+    padding: 5%; 
+    background-color: rgb(233, 233, 233); 
+
+}
+
+.jobssearchresult img {
+    width: 95%; 
+    height: auto; 
+}
+
+.jobssearchresult h3 {
+    Font-Family: 'Catamaran', Sans-Serif;
+    font-size: 25px;
+    margin: 12px 0; 
+}
+
+.jobssearchresult p {
+    Font-Family: 'Merriweather Sans', Sans-Serif;
+}
+
+@media only screen and (min-width: 540px) {
+.jobssearchresult{
+    width: 60%; 
+}
+  
+  }
+
+  @media only screen and (min-width: 1070px) {
+    .jobssearchresult{
+        width: 40%; 
+        padding: 2%; 
+    }
+      
+      }
