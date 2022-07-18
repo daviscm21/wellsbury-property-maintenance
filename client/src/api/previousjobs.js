@@ -1,9 +1,13 @@
-import { API_ENDPOINT } from ".";
+import axios from 'axios'
+
+axios.defaults.headers.common = {
+  "Content-Type": "application/json"
+}
+
+const baseUrl = 'previousjobs' 
 
 export const getJobs = async (type) => {
-
-     const res = await fetch(`${API_ENDPOINT}/previousjobs?type=${type}`)
-     const previousjobs = await res.json(); 
-     return previousjobs;
+     const request = axios.get(`${baseUrl}?type=${type}`)
+     return request.then(response => response)
 
     }
