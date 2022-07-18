@@ -4,9 +4,6 @@ const app = express(); // create an instance of the express module (app is the c
 var bodyParser = require('body-parser');
 
 const services = require('./services/requests'); 
-var usersRouter = require('./routes/users');
-var previousjobsRouter = require('./routes/previousjobs'); 
-var reviewsRouter = require('./routes/reviews'); 
 
 const PORT = process.env.PORT || 5000; // use either the host env var port (PORT) provided by Heroku or the local port (5000) on your machine
 
@@ -16,9 +13,10 @@ app.use(express.static('build')); // serve static files (css & js) from the 'pub
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/users', usersRouter);
-app.use('/previousjobs', previousjobsRouter);
-app.use('/reviews', reviewsRouter);
+app.get('/previousjobs', (req, res) => { // route root directory ('/' is this file (app.js))
+
+  services.findJobs(req, res);
+});
 
 app.get('/api/activities', (req, res) => { // route root directory ('/' is this file (app.js))
 

@@ -8,6 +8,27 @@ const pool = new Pool({ // create connection to database
   }
 });
 
+const findJobs = async (req, res) => {
+  const type = req.query.type;  
+
+  const query = 'SELECT * FROM jobs WHERE type = $1'; 
+
+  try{
+
+      const jobs = await pool.query(query, [type]);  
+      res.status(201).send({
+        status: 'Success',
+        data: jobs.rows[0],
+        
+      })
+
+} catch(err) {
+  return res.status(500).send({
+    error: err.message
+  });
+}
+}
+
 const getAllActivities = (req, res) => {
   const getString = 'SELECT * FROM my_activities'; // select all rows from the 'my_activities' table
   const countString = 'SELECT count(*) FROM my_activities' // get total row count from the 'my_activities' table
@@ -51,4 +72,4 @@ const deleteAllActivites = (req, res) => {
     .catch(err => console.log(err));  
 }
 
-module.exports = { getSingleActivity, addActivityToDB, getAllActivities, deleteAllActivites }
+module.exports = { findJobs, getSingleActivity, addActivityToDB, getAllActivities, deleteAllActivites }
