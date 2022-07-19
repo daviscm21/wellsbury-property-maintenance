@@ -1,27 +1,25 @@
 import { API_ENDPOINT } from ".";
 
-export const fetchReviews = async () => {
+import axios from 'axios'
 
-     const res = await fetch(`${API_ENDPOINT}/reviews`)
-     const reviews = await res.json(); 
-     return reviews; 
+axios.defaults.headers.common = {
+  "Content-Type": "application/json"
+}
+
+const baseUrl = 'reviews'; 
+
+export const fetchReviews = async () => {
+  const request = axios.get(`${baseUrl}`)
+  return request.then(response => response)
 
     }
 
 export const postReview = async (title, review, stars, firstname, surname) => {
-
-     const res = await fetch(`${API_ENDPOINT}/reviews`, {
-         method: 'POST',
-         headers: {
-           'Content-Type': 'application/json',
-         },
-         body: JSON.stringify({
-           title, 
-           review, 
-           stars,
-           firstname, 
-           surname, 
-         }) 
-       });
+  const request = axios.post(baseUrl, title, review, stars, firstname, surname)
+  
+  return request.then(response => {
+    console.log('this got sent back from the backend', response)
+    return response.data
+  })
  
  }; 

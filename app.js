@@ -18,21 +18,14 @@ app.get('/previousjobs', (req, res) => { // route root directory ('/' is this fi
   services.findJobs(req, res);
 });
 
-app.get('/api/activities', (req, res) => { // route root directory ('/' is this file (app.js))
+app.get('/reviews', (req, res) => { // route root directory ('/' is this file (app.js))
 
-  services.getAllActivities(req, res);
+  services.getReviews(req, res);
 });
 
-app.post('/api/activities', (req, res) => {
-  services.addActivityToDB(req, res);
-});
+app.post('/reviews', (req, res) => { // route root directory ('/' is this file (app.js))
 
-app.get('/api/activities/new', (req, res) => {
-  services.getSingleActivity(req, res);
-});
-
-app.get('/api/activities/delete', (req, res) => {
-  services.deleteAllActivites(req, res);
+  services.postReview(req, res);
 });
 
 app.listen(PORT, () => { // start server and listen on specified port

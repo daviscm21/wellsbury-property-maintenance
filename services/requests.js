@@ -29,47 +29,45 @@ const findJobs = async (req, res) => {
 }
 }
 
-const getAllActivities = (req, res) => {
-  const getString = 'SELECT * FROM my_activities'; // select all rows from the 'my_activities' table
-  const countString = 'SELECT count(*) FROM my_activities' // get total row count from the 'my_activities' table
-  pool.query(getString) // send query to select all rows from the 'my_activities' table 
-    .then(activityResults => {
-      let activities = activityResults.rows;
-      pool.query(countString) // send query to get total row count from the 'my_activities' table
-        .then(countResult => {
-          let count = countResult.rows[0].count;
-          console.log('Activities List:', activities);
-          console.log(`Activities Count: ${count}`);
-          res.json({ activities, count})
-          // res.render('index', { activities: activities, count: count }); // render index.ejs, and send activity and count results to index.ejs
-          // TODO: Send info to frontend 
-        })
-    })
-    .catch(err => console.log(err));
+exports.getReviews = async (req, res) => {
+
+  const query = 'SELECT * FROM reviews ORDER BY id DESC LIMIT 3'; 
+
+  try{
+
+      const reviews = await pool.query(query);  
+      res.status(201).send(reviews.rows)
+
+} catch(err) {
+  return res.status(500).send({
+    error: err.message
+  });
+}
 }
 
-const getSingleActivity = (req, res) => {
-  fetch('https://www.boredapi.com/api/activity') // fetch activity from bored API - https://www.boredapi.com/about
-    .then(data => data.json()) // return a promise containing the response
-    .then(json => res.json(json)) // extract the JSON body content from the response (specifically the activity value) and sends it to the client
-    .catch((err) => console.log(err)) // log errors to the console
+let reviewIdCounter = 4; 
+
+exports.postReview = async (req, res) => {
+    const {title, review, stars, firstname, surname} = req.body; 
+    const query = 'INSERT INTO reviews (id, title, review, stars, firstname, surname) VALUES ($1, $2, $3, $4, $5, $6)'; 
+
+  try{
+
+    let id = reviewIdCounter++;  
+    
+    const newReview = await pool.query(query, [id, title, review, stars, firstname, surname]);
+
+    res.status(201).send({
+      status: 'Success',
+      message: 'New review posted',
+      data: newReview.rows[0],
+      })
+  } catch(err) {
+
+    return res.status(500).send({
+      error: err.message
+    });
+  }
 }
 
-const addActivityToDB = (req, res) => {
-  const activity = [ req.body.activity ]
-
-  const addString = 'INSERT INTO my_activities (activity) VALUES ($1) RETURNING *'; // insert value into my_activities' table
-
-  pool.query(addString, activity)
-    .then(result => res.json(result))
-    .catch(err => console.log(err));
-}
-
-const deleteAllActivites = (req, res) => {
-  const removeString = 'DELETE FROM my_activities'; // delete all items in the 'my_activities' table
-  pool.query(removeString) // send query delete all items in the 'my_activities' table
-    .then(res.send('All activities cleared!')) // send confirmation to the browser
-    .catch(err => console.log(err));  
-}
-
-module.exports = { findJobs, getSingleActivity, addActivityToDB, getAllActivities, deleteAllActivites }
+module.exports = { findJobs }

@@ -28,7 +28,7 @@ const search = async (type) => {
       <JobsSearchBar search={search}/>
       <JobsSearchResults previousJobs={previousJobs}/>     
       <Reviews />
-      <footer>Charles Davis Web Development 2022</footer>
+      <footer>Charles Michael Davis - Web Developer - 2022</footer>
     </div>
   );
 
