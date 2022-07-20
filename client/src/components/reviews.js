@@ -7,7 +7,7 @@ const Reviews = () => {
     const [reviews, setReviews] = useState(''); 
 
     useEffect(() => {
-      fetchReviews().then(fetchedReviews => setReviews(fetchedReviews.data))
+      fetchReviews().then(fetchedReviews => setReviews(fetchedReviews))
     }, [])
 
     const starsLoop = (num) => {
