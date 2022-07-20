@@ -10,7 +10,7 @@ const baseUrl = 'reviews';
 
 export const fetchReviews = async () => {
   const request = axios.get(`${baseUrl}`)
-  return request.then(response => response)
+  return request.then(response => response.data)
 
     }
 

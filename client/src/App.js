@@ -12,7 +12,7 @@ const [previousJobs, setPreviousJobs ] = useState('');
 const search = async (type) => {
    getJobs(type).then((res) => {
            
-    setPreviousJobs(res.data.data)
+    setPreviousJobs(res.data)
  });  
 }
 

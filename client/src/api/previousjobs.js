@@ -8,6 +8,6 @@ const baseUrl = 'previousjobs'
 
 export const getJobs = async (type) => {
      const request = axios.get(`${baseUrl}?type=${type}`)
-     return request.then(response => response)
+     return request.then(response => response.data)
 
     }
