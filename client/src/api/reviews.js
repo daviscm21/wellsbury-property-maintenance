@@ -15,7 +15,7 @@ export const fetchReviews = async () => {
     }
 
 export const postReview = async (title, review, stars, firstname, surname) => {
-  const request = axios.post(baseUrl, title, review, stars, firstname, surname)
+  const request = axios.post(baseUrl, {title, review, stars, firstname, surname})
   
   return request.then(response => {
     console.log('this got sent back from the backend', response)
