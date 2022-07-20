@@ -29,7 +29,7 @@ const findJobs = async (req, res) => {
 }
 }
 
-exports.getReviews = async (req, res) => {
+const getReviews = async (req, res) => {
 
   const query = 'SELECT * FROM reviews ORDER BY id DESC LIMIT 3'; 
 
@@ -47,7 +47,7 @@ exports.getReviews = async (req, res) => {
 
 let reviewIdCounter = 4; 
 
-exports.postReview = async (req, res) => {
+const postReview = async (req, res) => {
     const {title, review, stars, firstname, surname} = req.body; 
     const query = 'INSERT INTO reviews (id, title, review, stars, firstname, surname) VALUES ($1, $2, $3, $4, $5, $6)'; 
 
@@ -70,4 +70,4 @@ exports.postReview = async (req, res) => {
   }
 }
 
-module.exports = { findJobs }
+module.exports = { findJobs, getReviews, postReview }

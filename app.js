@@ -13,17 +13,17 @@ app.use(express.static('build')); // serve static files (css & js) from the 'pub
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/previousjobs', (req, res) => { // route root directory ('/' is this file (app.js))
+app.get('/previousjobs', (req, res) => { 
 
   services.findJobs(req, res);
 });
 
-app.get('/reviews', (req, res) => { // route root directory ('/' is this file (app.js))
+app.get('/reviews', (req, res) => { 
 
   services.getReviews(req, res);
 });
 
-app.post('/reviews', (req, res) => { // route root directory ('/' is this file (app.js))
+app.post('/reviews', (req, res) => { 
 
   services.postReview(req, res);
 });
