@@ -1,12 +1,25 @@
-const fetch = require('node-fetch'); // import node-fetch (enables the fetch API to be used server-side)
 const { Pool } = require('pg'); // import node-postgres
+require('dotenv').config(); 
 
-const pool = new Pool({ // create connection to database
+if(process.env.DATABASE_URL)
+{var pool = new Pool({ // create connection to database
   connectionString: process.env.DATABASE_URL,	// use DATABASE_URL environment variable from Heroku app 
   ssl: {
     rejectUnauthorized: false // don't check for SSL cert
   }
+})
+}
+else {
+var pool = new Pool({
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_DATABASE,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
 });
+} 
+
+
 
 const findJobs = async (req, res) => {
   const type = req.query.type;  
