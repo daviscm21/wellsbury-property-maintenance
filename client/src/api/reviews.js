@@ -1,5 +1,3 @@
-import { API_ENDPOINT } from ".";
-
 import axios from 'axios'
 
 axios.defaults.headers.common = {
