@@ -12,6 +12,8 @@ const PORT = process.env.PORT || 5000; // use either the host env var port (PORT
 app.use(helmet.frameguard({ action: 'SAMEORIGIN' }));
 app.use(helmet.noSniff());
 app.use(helmet.hsts());
+app.use(helmet.referrerPolicy());
+app.use(helmet.xssFilter());
 app.use(expressCspHeader({
   directives: {
       'default-src': [SELF],
